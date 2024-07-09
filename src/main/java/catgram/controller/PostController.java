@@ -1,30 +1,25 @@
-package catgram.controller;
+package ru.yandex.practicum.catsgram.controller;
 
-import catgram.model.Post;
-import catgram.model.User;
-import catgram.service.PostService;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDate;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import ru.yandex.practicum.catsgram.model.Post;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @RestController
-@RequestMapping("/user")
 public class PostController {
 
-    private final PostService postService;
-    @Autowired
-    public PostController(PostService postService) {
-        this.postService = postService;
+    private final List<Post> posts = new ArrayList<>();
+
+    @GetMapping("/posts")
+    public List<Post> findAll() {
+        return posts;
     }
 
-
-    @GetMapping("/findAllPostsOfUser")
-    public List<Map<String, Object>> findAllPostsOfUser(@RequestHeader String UserID){
-        return postService.findAllPostsOfUser(UserID);
+    @PostMapping(value = "/post")
+    public void create(@RequestBody Post post) {
+        posts.add(post);
     }
 }
