@@ -1,27 +1,33 @@
 package catgram.model;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
 
 import java.time.Instant;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 
 @Getter
 @Setter
 public class Post {
-    static int idMaker = 1000;
-    @NonNull
-    private int id;
-    private String author;
-    private final LocalDate creationDate = LocalDate.now();
-    private String description;
-    private String photoUrl;
+    private User author;
+    private String id;
+    private LocalDate creationDate;
+    private String descripton;
+    private String photoURL;
 
-    public Post(@NonNull int id, String author, String description, String photoUrl) {
-        this.id = ++idMaker;
+    public Post(User author, String id, LocalDate creationDate, String descripton, String photoURL) {
         this.author = author;
-        this.description = description;
-        this.photoUrl = photoUrl;
+        this.id = id;
+        this.creationDate = creationDate;
+        this.descripton = descripton;
+        this.photoURL = photoURL;
+    }
+
+    public Post(User author, String descripton, String photoURL) {
+        this.author = author;
+        this.descripton = descripton;
+        this.photoURL = photoURL;
     }
 }

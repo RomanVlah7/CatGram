@@ -1,19 +1,40 @@
 package catgram.model;
 
-import lombok.Builder;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import java.time.Instant;
-import java.time.LocalDate;
 
 @Data
-@Builder
-
 public class User {
-    public LocalDate birthDate;
-    private String email;
-    private String nickname;
+    public String id;
+    public String username;
+    public String nickname;
 
+    public User(String id, String username, String nickname) {
+        this.id = id;
+        this.username = username;
+        this.nickname = nickname;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
 }
