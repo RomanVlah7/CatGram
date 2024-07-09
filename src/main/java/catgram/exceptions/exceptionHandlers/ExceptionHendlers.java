@@ -15,23 +15,23 @@ import java.util.Map;
 public class ExceptionHendlers {
     @ExceptionHandler
     @Autowired
-    public static ResponseEntity<Map<String, String>> userAlreadyExists(UserAlreadyExistsException e) {
-        return new ResponseEntity<>(Map.of("Invalid email", e.getMessage()),
+    public static ResponseEntity<Map<String, String>> userAlreadyExists(UserAlreadyExistsException e){
+        return new ResponseEntity<>(Map.of("Invalid email",e.getMessage()),
                 HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler
     @Autowired
-    public static ResponseEntity<Map<String, String>> invalidEmailException(InvalidEmailException e) {
-        return new ResponseEntity<>(Map.of("Invalid email", e.getMessage()),
+    public static ResponseEntity<Map<String, String>> invalidEmailException(InvalidEmailException e){
+        return new ResponseEntity<>(Map.of("Invalid email",e.getMessage()),
                 HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler
     @Autowired
-    public static ResponseEntity<Map<String, String>> workInProgress(WorkInProgress e) {
+    public static ResponseEntity<Map<String, String>> workInProgress(WorkInProgress e){
         return new ResponseEntity<>(
-                Map.of("Not ready yet", e.getMessage()),
-                HttpStatus.BAD_REQUEST);
+                Map.of("Not ready yet",e.getMessage()),
+        HttpStatus.BAD_REQUEST);
     }
 }
