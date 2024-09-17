@@ -1,41 +1,33 @@
-package ru.yandex.practicum.catsgram.model;
+package catgram.model;
+
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
 
 import java.time.Instant;
+import java.time.LocalDate;
 
+
+@Getter
+@Setter
 public class Post {
+    private User author;
+    private String id;
+    private LocalDate creationDate;
+    private String descripton;
+    private String photoURL;
 
-    private final String author; // автор
-    private final Instant creationDate = Instant.now(); // дата создания
-    private String description; // описание
-    private String photoUrl; // url-адрес фотографии
-
-    public Post(String author, String description, String photoUrl) {
+    public Post(User author, String id, LocalDate creationDate, String descripton, String photoURL) {
         this.author = author;
-        this.description = description;
-        this.photoUrl = photoUrl;
+        this.id = id;
+        this.creationDate = creationDate;
+        this.descripton = descripton;
+        this.photoURL = photoURL;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public Instant getCreationDate() {
-        return creationDate;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getPhotoUrl() {
-        return photoUrl;
-    }
-
-    public void setPhotoUrl(String photoUrl) {
-        this.photoUrl = photoUrl;
+    public Post(User author, String descripton, String photoURL) {
+        this.author = author;
+        this.descripton = descripton;
+        this.photoURL = photoURL;
     }
 }
